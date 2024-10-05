@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Message from "/components/message";
+import Message from "components/message";
 import { useEffect, useState } from "react";
-import { db } from "/utils/firebase";
+import { db } from "../utils/firebase";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Link from "next/link";
 import { MdOutlineComment } from "react-icons/md";

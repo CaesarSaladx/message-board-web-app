@@ -1,8 +1,10 @@
-import Message from "/components/message";
+import Message from "../components/message";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { auth, db } from "/utils/firebase";
+import { auth, db } from "../utils/firebase";
 import { toast } from "react-toastify";
+import Link from "next/link";
+import { AiFillEdit } from "react-icons/ai";
 import {
   arrayUnion,
   Timestamp,
