@@ -60,55 +60,49 @@ const Dashboard = () => {
 
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
+      <div>
+        <h1>Your posts</h1>
         <div>
-          <h1>Your posts</h1>
-          <div>
-            {posts.map((post) => {
-              return (
-                <Message {...post} key={post.id}>
-                  <div className="flex gap-4">
-                    <button
-                      onClick={() => deletePost(post.id)}
-                      className="text-pink-600 flex items-center justify-center gap-2 py-2 text-sm"
-                    >
-                      <BsTrash2Fill className="text-2xl" />
-                      Delete
+          {posts.map((post) => {
+            return (
+              <Message {...post} key={post.id}>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => deletePost(post.id)}
+                    className="text-pink-600 flex items-center justify-center gap-2 py-2 text-sm"
+                  >
+                    <BsTrash2Fill className="text-2xl" />
+                    Delete
+                  </button>
+
+                  <Link href={{ pathname: "/post", query: post }}>
+                    <button className="text-teal-600 flex items-center justify-center gap-2 py-2 text-sm">
+                      <AiFillEdit className="text-2xl" />
+                      Edit
                     </button>
+                  </Link>
 
-                    <Link href={{ pathname: "/post", query: post }}>
-                      <button className="text-teal-600 flex items-center justify-center gap-2 py-2 text-sm">
-                        <AiFillEdit className="text-2xl" />
-                        Edit
-                      </button>
-                    </Link>
-
-                    <Link
-                      href={{ pathname: `/${post.id}`, query: { ...post } }}
-                    >
-                      <button className="text-black-600 flex items-center justify-center gap-2 py-2 text-sm">
-                        <MdOutlineComment className="text-2xl" />
-                        {post.comments?.length > 0
-                          ? post.comments?.length
-                          : 0}{" "}
-                        comments
-                      </button>
-                    </Link>
-                  </div>
-                </Message>
-              );
-            })}
-          </div>
-          <button
-            className="font-medium text-white bg-gray-800 py-2 px-4 my-6"
-            onClick={() => signOut()}
-          >
-            Sign out
-          </button>
+                  <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
+                    <button className="text-black-600 flex items-center justify-center gap-2 py-2 text-sm">
+                      <MdOutlineComment className="text-2xl" />
+                      {post.comments?.length > 0
+                        ? post.comments?.length
+                        : 0}{" "}
+                      comments
+                    </button>
+                  </Link>
+                </div>
+              </Message>
+            );
+          })}
         </div>
-      )}
+        <button
+          className="font-medium text-white bg-gray-800 py-2 px-4 my-6"
+          onClick={() => signOut()}
+        >
+          Sign out
+        </button>
+      </div>
     </>
   );
 };

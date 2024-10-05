@@ -10,7 +10,6 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
-import Spinner from "/components/spinner";
 
 const Post = () => {
   const [post, setPost] = useState({ description: "" });
@@ -100,7 +99,9 @@ const Post = () => {
     <>
       {/* if loading render loading spinner otherwise render post page */}
       {loading ? (
-        <Spinner />
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+        </div>
       ) : (
         <div className="my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto">
           <form onSubmit={submitPost}>
